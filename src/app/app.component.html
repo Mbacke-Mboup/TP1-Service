@@ -5,25 +5,26 @@
   </header>
   <div class="row">
     <div class="col-3">
-      <form (ngSubmit)="searchArtist()" *ngIf="!result">
+      <form (ngSubmit)="searchArtist()" *ngIf="!resultArtist">
         <input type="text" name="artistName" [(ngModel)]="artist" class="form-control" placeholder="Nom d'un artiste">
         <input type="submit" value="Rechercher l'artiste" class="btn btn-light">
       </form>
-      <form (ngSubmit)="newSearch()" *ngIf="result">
+      <form (ngSubmit)="newSearch()" *ngIf="resultArtist">
         <input type="submit" value="Nouvelle recherche">
       </form>
     </div>
-    <div class="col artists">
+    <div class="col artists w-100">
         <h2>Résultats</h2>
-        <div *ngIf="result">
+        <div *ngIf="resultArtist">
 		  <!-- L'affichage des artistes similaires sera ici 😩 -->
-      <ul *ngFor="let i of similarArtists" class="mt-5">
-        <li>
-          <img src="../assets/images/singer.png" class="rounded rounded-5" alt="images">
-          <p class="my-5" >{{i}}</p>
-        </li>
-        
-      </ul>
+      <div class="row w-100">
+        <h1 class="my-5">{{artist}}</h1>
+          <div *ngFor="let i of albums" class="col-3 px-1" (click)="infoAlbum(i)">
+            <img src="{{i.pochette}}" class="img-fluid" alt="images">
+            <p class="my-5" >{{i.name}}</p>
+          </div>
+          
+      </div>
 		</div>
     </div>
   </div>
