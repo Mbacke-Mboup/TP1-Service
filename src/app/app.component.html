@@ -5,12 +5,15 @@
   </header>
   <div class="row">
     <div class="col-3">
-      <form (ngSubmit)="searchArtist()" *ngIf="!resultArtist">
+      <form (ngSubmit)="searchArtist()" *ngIf="!resultArtist && !resultSong">
         <input type="text" name="artistName" [(ngModel)]="artist" class="form-control" placeholder="Nom d'un artiste">
         <input type="submit" value="Rechercher l'artiste" class="btn btn-light">
       </form>
       <form (ngSubmit)="newSearch()" *ngIf="resultArtist">
         <input type="submit" value="Nouvelle recherche">
+      </form>
+      <form (ngSubmit)="backAlbums()" *ngIf="resultSong">
+        <input type="submit" value="Retourner aux Albums">
       </form>
     </div>
     <div class="col artists w-100">
