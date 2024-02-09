@@ -26,6 +26,16 @@
           
       </div>
 		</div>
+    <div *ngIf="resultSong">
+      <h1 class="my-5">Chanson de <strong>{{nomAlbum}}</strong></h1>
+		  <!-- L'affichage des artistes similaires sera ici 😩 -->
+      <ol>
+          <li *ngFor="let i of chansons">
+            <a href="{{i.url}}">{{i.name}}</a>
+          </li>
+          
+        </ol>
+		</div>
     </div>
   </div>
 </div>
